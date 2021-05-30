@@ -1,32 +1,46 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Navbar v-if="this.$route.name != 'Login'" />
     <router-view/>
   </div>
 </template>
 
+<script>
+import Navbar from './components/Navbar/Navbar'
+export default {
+  components:{
+    Navbar
+  }
+}
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import './sass/global.scss';
+
+html{
+    overflow-x: hidden;
+    font-size: 62.5%; //1rem = 10px
+
+
+   /*@media only screen and (max-width: 500px){
+        font-size: 80%;
+    }*/
 }
 
-#nav {
-  padding: 30px;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  //font-family: 'Gilroy', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+body{
+  overflow-x: hidden;
+  margin-top: 10rem;
+  padding: 0 2rem;
+  @media only screen and (max-width: 500px){
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
   }
 }
 </style>
