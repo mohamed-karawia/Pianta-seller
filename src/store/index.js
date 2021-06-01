@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import classify from './modules/classify'
+import products from './modules/products'
 
 import axios from 'axios';
 import router from '../router/index'
@@ -145,6 +146,7 @@ export default new Vuex.Store({
   },
 
   modules: {
-    classify
+    classify,
+    products
   }
 })
