@@ -3,7 +3,7 @@
     <div class="content">
       <div class="details">
         <h1>Fruits</h1>
-        <h2>your health is the most thing we care about</h2>
+        <h2>your health is the most thing we care about.</h2>
       </div>
       <div class="form">
         <Login v-if="form === 'login'" @switchForm="switchForm('signup')" />
@@ -57,10 +57,11 @@ export default {
 
   .details {
     //background-color: #38dbcbe1;
-    background-color: rgba(255, 255, 255, 0.925);
+    background-color: $primary-color;
     position: absolute;
     top: 15%;
     max-width: 43%;
+    padding: 1rem 3rem;
 
     @media only screen and (max-width: 500px) {
       max-width: 100%;
@@ -84,7 +85,7 @@ export default {
   }
 
   h1 {
-    color: #38dbcbe1;
+    color: #ffff;
     font-size: 8rem;
     text-transform: uppercase;
     font-weight: 500;
@@ -93,8 +94,8 @@ export default {
   }
 
   h2 {
-    color: #38dbcbe1;
-    font-size: 4rem;
+    color: #ffff;
+    font-size: 3.2rem;
     text-transform: capitalize;
     font-weight: 400;
     animation-name: slide;

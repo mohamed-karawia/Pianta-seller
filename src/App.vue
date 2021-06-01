@@ -10,6 +10,9 @@ import Navbar from './components/Navbar/Navbar'
 export default {
   components:{
     Navbar
+  },
+  created(){
+    this.$store.dispatch('tryAutoLogin');
   }
 }
 </script>

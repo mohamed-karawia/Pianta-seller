@@ -1,14 +1,16 @@
 <template>
     <div class="card">
-        <img src="../../assets/user.svg" alt="User">
-        <h2>Seller Name</h2>
-        <h2>sellerEmail@gmail.com</h2>
+        <img :src="'https://gradubanana.herokuapp.com/'+ this.$store.state.sellerImage" alt="User">
+        <h2>{{ this.$store.state.sellerName }}</h2>
+        <h2>{{ this.$store.state.sellerEmail }}</h2>
     </div>
 </template>
 
 <script>
 export default {
-    
+  created(){
+    console.log('https://gradubanana.herokuapp.com/' + this.$store.state.sellerImage)
+  }
 }
 </script>
 
