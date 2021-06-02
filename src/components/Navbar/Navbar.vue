@@ -1,7 +1,7 @@
 <template>
   <nav>
     <div class="upper--nav">
-      <div class="nav--logo">
+      <div class="nav--logo" @click="$router.push('/')">
         <h1>Pianta <span>seller</span></h1>
       </div>
 
@@ -29,7 +29,7 @@
             <router-link to="/">HOME</router-link>
           </li>
           <li class="mobile--nav--list__item" @click="showMobileMenu = false">
-            <router-link to="/">SHOP</router-link>
+            <router-link to="/products">My products</router-link>
           </li>
           <li class="mobile--nav--list__item" @click="logout">
             <button>LOGOUT</button>
@@ -77,6 +77,7 @@ export default {
 .nav--logo {
   color: white;
   font-size: 1.5rem;
+  cursor: pointer;
 
   span {
     font-size: 1.3rem;

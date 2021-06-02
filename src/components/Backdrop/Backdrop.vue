@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="backdrop"></div>
+    <div class="backdrop" @click="hideBackdrop"></div>
     <div class="backdrop__container">
       <slot></slot>
     </div>
@@ -13,7 +13,11 @@ export default {
     return {};
   },
 
-  methods: {},
+  methods: {
+    hideBackdrop(){
+      this.$emit('hideBackdrop')
+    }
+  },
   computed: {},
 };
 </script>

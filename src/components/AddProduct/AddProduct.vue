@@ -142,6 +142,11 @@ export default {
       fd.append("name", this.productName);
       fd.append("price", this.price);
       this.$store.dispatch("addProduct", fd);
+      this.fruit = '';
+      this.selectedFiles = [];
+      this.name = '';
+      this.price = '';
+      this.$emit('hideBackdrop')
     },
   },
   components: {
