@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <seller-card />
-    <order-list />
+    <order-list :orders="orders"/>
   </div>
 </template>
 
@@ -13,6 +13,14 @@ export default {
   components:{
     orderList,
     sellerCard
+  },
+  created(){
+    this.$store.dispatch('getOrders')
+  },
+  computed: {
+    orders(){
+      return this.$store.getters.orders
+    }
   }
 }
 </script>

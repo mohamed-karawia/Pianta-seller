@@ -2,7 +2,7 @@
   <div class="order">
     <div class="order--detail">
       <h2>species:</h2>
-      <h3>{{order.species}}</h3>
+      <h3>{{order.product.name}}</h3>
     </div>
     <div class="order--detail">
       <h2>quantity:</h2>
@@ -10,15 +10,15 @@
     </div>
     <div class="order--detail">
       <h2>price:</h2>
-      <h3>{{order.price}}$</h3>
+      <h3>{{order.product.price}}$</h3>
     </div>
     <div class="order--detail">
       <h2>address:</h2>
-      <h3>{{order.address}}</h3>
+      <h3>{{order.locationName}} {{order.locationAddres}}</h3>
     </div>
     <div class="order--detail">
       <h2>mobile:</h2>
-      <h3>{{order.mobile}}</h3>
+      <h3>{{order.client.mobile}}</h3>
     </div>
     <div class="order--detail">
       <h2>Date:</h2>
@@ -38,7 +38,6 @@ export default {
 <style lang="scss" scoped>
 .order {
   //width: 30%;
-  width: 30rem;
   border-radius: 1rem;
   -webkit-box-shadow: 1px 5px 10px 0px rgba(50, 50, 50, 0.158);
   -moz-box-shadow: 1px 5px 10px 0px rgba(50, 50, 50, 0.158);
@@ -49,7 +48,7 @@ export default {
   padding: 1rem 3rem;
 
     @media only screen and (max-width: 500px){
-        width: 100%;
+        //width: 100%;
     }
 
   &--detail {

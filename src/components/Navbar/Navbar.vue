@@ -7,7 +7,7 @@
 
       <ul class="nav--list">
         <li class="nav--list__item">
-          <router-link to="/">Orders</router-link>
+          <router-link to="/" exact>Orders</router-link>
         </li>
 
         <li class="nav--list__item">
@@ -154,6 +154,11 @@ export default {
       color: white;
       font-size: 1.8rem;
       font-weight: 600;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
@@ -209,5 +214,10 @@ export default {
       cursor: pointer;
     }
   }
+}
+
+a.router-link-active{
+  background-color: white;
+  color: $primary-color;
 }
 </style>

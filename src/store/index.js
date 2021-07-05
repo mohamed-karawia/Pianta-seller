@@ -1,7 +1,8 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import classify from './modules/classify'
-import products from './modules/products'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import classify from './modules/classify';
+import products from './modules/products';
+import orders from './modules/orders'
 
 import axios from 'axios';
 import router from '../router/index'
@@ -48,6 +49,7 @@ export default new Vuex.Store({
       state.sellerName = '';
       state.sellerMobile = '';
       state.sellerImage = '';
+      state.sellerEmail= '';
       router.push('/login')
     },
 
@@ -147,6 +149,7 @@ export default new Vuex.Store({
 
   modules: {
     classify,
-    products
+    products,
+    orders
   }
 })
