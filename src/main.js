@@ -9,7 +9,7 @@ import axios from 'axios'
 import Vuelidate from 'vuelidate'
 
 axios.defaults.baseURL = 'https://gradubanana.herokuapp.com/';
-axios.defaults.headers.common['Authorization'] = `auth ${localStorage.getItem('token')}`
+
 
 Vue.use(Vuelidate);
 

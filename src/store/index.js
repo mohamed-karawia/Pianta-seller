@@ -41,7 +41,8 @@ export default new Vuex.Store({
       state.sellerImage = data.sellerImage;
       state.sellerEmail = data.sellerEmail;
       //console.log(this.getters.isAuthenticated)
-      router.push('/')
+      axios.defaults.headers.common['Authorization'] = `auth ${state.idToken}`
+
     },
 
     clearAuthData (state) {
@@ -118,6 +119,7 @@ export default new Vuex.Store({
         localStorage.setItem('sellerImage', res.data.data.sellerImage);
         localStorage.setItem('sellerEmail', res.data.data.sellerEmail);
         commit('authUser', res.data.data)
+        router.push('/')
         //dispatch('setLogoutTimer', res.data.data.expiresIn)
       })
       .catch(err => {
