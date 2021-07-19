@@ -1,6 +1,6 @@
 <template>
   <div class="fruit">
-    <img :src="`https://gradubanana.herokuapp.com/${fruit.imageUrl}`" />
+    <img :src="`${fruit.imageUrl}`" />
     <div class="fruit--details">
       <h2>{{ fruit.name }}</h2>
       <h3>{{ fruit.productType }}</h3>

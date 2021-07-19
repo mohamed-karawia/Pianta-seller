@@ -95,6 +95,7 @@ export default new Vuex.Store({
         localStorage.setItem('sellerImage', res.data.data.sellerImage);
         localStorage.setItem('sellerEmail', res.data.data.sellerEmail);
         state.loading = false
+        router.push('/')
         /*localStorage.setItem('expirationDate', expirationDate);
         dispatch('setLogoutTimer', res.data.data.expiresIn)*/
       })
@@ -144,8 +145,8 @@ export default new Vuex.Store({
 
     },
     logout ({commit}) {
-      commit('clearAuthData')
       localStorage.clear();
+      commit('clearAuthData')
     }
   },
 

@@ -1,17 +1,19 @@
 <template>
   <div class="ordersList">
-    <orders-nav />
-    <ul>
+    <orders-nav @changeType="changeType"/>
+    <ul v-if="!loading">
       <li v-for="order in orders" :key="order._id">
         <Order :order="order" />
       </li>
     </ul>
+    <Spinner v-else />
   </div>
 </template>
 
 <script>
 import Order from "../Order/Order";
 import ordersNav from "../../components/OrdersNav/OrdersNav";
+import Spinner from '../../components/Spinner/Spinner.vue'
 
 export default {
   data() {
@@ -19,11 +21,18 @@ export default {
   },
   props: {
     orders: Array,
+    loading: Boolean
   },
   components: {
     Order,
     ordersNav,
+    Spinner
   },
+  methods: {
+    changeType(type){
+      this.$emit('changeType', type)
+    }
+  }
 };
 </script>
 

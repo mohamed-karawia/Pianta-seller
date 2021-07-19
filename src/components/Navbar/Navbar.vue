@@ -26,7 +26,7 @@
       <div :class="[showMobileMenu ? 'mobile--menu open' : 'mobile--menu']">
         <ul class="mobile--nav--list">
           <li class="mobile--nav--list__item" @click="showMobileMenu = false">
-            <router-link to="/">HOME</router-link>
+            <router-link to="/" exact>HOME</router-link>
           </li>
           <li class="mobile--nav--list__item" @click="showMobileMenu = false">
             <router-link to="/products">My products</router-link>

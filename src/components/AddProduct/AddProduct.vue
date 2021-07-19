@@ -76,6 +76,11 @@
         <input type="text" v-model="price" />
       </div>
 
+      <div class="input--box" v-if="!classifyFreshLoading">
+        <label>Stock (per unit)</label>
+        <input type="number" v-model="stock" placeholder="Enter the number of units in stock"/>
+      </div>
+
       <button
         :disabled="classifyFreshLoading || productName == '' || price == ''"
         @click="addProduct"
@@ -101,6 +106,7 @@ export default {
       productName: "",
       price: "",
       showFinalForm: false,
+      stock: 0
     };
   },
   methods: {
@@ -141,12 +147,14 @@ export default {
       fd.append("fresh", fresh);
       fd.append("name", this.productName);
       fd.append("price", this.price);
+      fd.append("quantity", Number(this.stock));
       this.$store.dispatch("addProduct", fd);
-      this.fruit = '';
+      this.fruit = "";
       this.selectedFiles = [];
-      this.name = '';
-      this.price = '';
-      this.$emit('hideBackdrop')
+      this.name = "";
+      this.price = "";
+      this.quantity = 0;
+      this.$emit("hideBackdrop");
     },
   },
   components: {

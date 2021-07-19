@@ -1,16 +1,26 @@
 <template>
     <nav>
         <ul>
-            <li class="active"><h2>Arrived</h2></li>
-            <li><h2>Pending</h2></li>
-            <li><h2>Cancelled</h2></li>
+            <li :class="[activeRoute === 'all' ? 'active' : '']" @click="changeType('all')"><h2>All</h2></li>
+            <li :class="[activeRoute === 'started' ? 'active' : '']" @click="changeType('started')"><h2>Pending</h2></li>
+            <li :class="[activeRoute === 'ended' ? 'active' : '']" @click="changeType('ended')"><h2>Arrived</h2></li>
         </ul>
     </nav>
 </template>
 
 <script>
 export default {
-    
+    data(){
+        return {
+            activeRoute: 'all'
+        }
+    },
+    methods: {
+        changeType(type){
+            this.activeRoute = type
+            this.$emit('changeType', type)
+        }
+    },
 }
 </script>
 

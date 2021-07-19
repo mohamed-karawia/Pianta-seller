@@ -1,16 +1,21 @@
 <template>
   <div class="order">
+    <img :src="`${order.product.imageUrl}`" />
     <div class="order--detail">
       <h2>species:</h2>
       <h3>{{order.product.name}}</h3>
     </div>
     <div class="order--detail">
       <h2>quantity:</h2>
-      <h3>{{order.quantity}}</h3>
+      <h3>{{order.amount}}</h3>
     </div>
     <div class="order--detail">
       <h2>price:</h2>
       <h3>{{order.product.price}}$</h3>
+    </div>
+    <div class="order--detail">
+      <h2>Total Price:</h2>
+      <h3>{{order.product.price * order.amount}}$</h3>
     </div>
     <div class="order--detail">
       <h2>address:</h2>
@@ -19,10 +24,6 @@
     <div class="order--detail">
       <h2>mobile:</h2>
       <h3>{{order.client.mobile}}</h3>
-    </div>
-    <div class="order--detail">
-      <h2>Date:</h2>
-      <h3>{{order.Date}}</h3>
     </div>
   </div>
 </template>
@@ -50,6 +51,16 @@ export default {
     @media only screen and (max-width: 500px){
         //width: 100%;
     }
+
+    img {
+    width: 14rem;
+    align-self: center;
+
+    @media only screen and (max-width: 500px) {
+      margin-right: 1rem;
+      width: 10rem;
+    }
+  }
 
   &--detail {
     display: flex;
