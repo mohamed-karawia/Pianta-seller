@@ -78,7 +78,11 @@
 
       <div class="input--box" v-if="!classifyFreshLoading">
         <label>Stock (per unit)</label>
-        <input type="number" v-model="stock" placeholder="Enter the number of units in stock"/>
+        <input
+          type="number"
+          v-model="stock"
+          placeholder="Enter the number of units in stock"
+        />
       </div>
 
       <button
@@ -95,18 +99,19 @@
 
 <script>
 import Spinner from "../Spinner/Spinner";
+import fruits from "../../fruits";
 
 export default {
   data() {
     return {
       selectedFiles: [],
-      fruits: ["Bananas", "Apples", "Oranges", "Grapes", "Watermelons"],
+      fruits: fruits,
       fruit: "",
       changeFruit: false,
       productName: "",
       price: "",
       showFinalForm: false,
-      stock: 0
+      stock: 0,
     };
   },
   methods: {
@@ -133,6 +138,13 @@ export default {
         this.$store.dispatch("classifyFresh", fd);
       }
     },
+    clearInputs() {
+      this.fruit = "";
+      this.selectedFiles = [];
+      this.name = "";
+      this.price = "";
+      this.quantity = 0;
+    },
     addProduct() {
       let productType = "";
       if (this.fruit == "") {
@@ -149,12 +161,9 @@ export default {
       fd.append("price", this.price);
       fd.append("quantity", Number(this.stock));
       this.$store.dispatch("addProduct", fd);
-      this.fruit = "";
-      this.selectedFiles = [];
-      this.name = "";
-      this.price = "";
-      this.quantity = 0;
+      this.clearInputs();
       this.$emit("hideBackdrop");
+      this.$store.dispatch("clearData");
     },
   },
   components: {

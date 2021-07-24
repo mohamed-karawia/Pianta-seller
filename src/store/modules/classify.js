@@ -35,6 +35,10 @@ const mutations = {
         }else{
             state.fruitFresh = 100 - parseInt(result[0].probability)
         }
+    },
+    clearData(state) {
+        state.fruitType = '';
+        state.fruitFresh = '';
     }
 };
 

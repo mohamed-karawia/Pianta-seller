@@ -1,6 +1,8 @@
 <template>
   <div class="fruit">
-    <img :src="`${fruit.imageUrl}`" />
+    <div class="fruit__image">
+      <img :src="`${fruit.imageUrl}`" />
+    </div>
     <div class="fruit--details">
       <h2>{{ fruit.name }}</h2>
       <h3>{{ fruit.productType }}</h3>
@@ -17,9 +19,9 @@ export default {
     fruit: Object,
   },
   methods: {
-    deleteProduct(id){
-      this.$emit('deleteProduct', id)
-    }
+    deleteProduct(id) {
+      this.$emit("deleteProduct", id);
+    },
   },
 };
 </script>
@@ -28,7 +30,7 @@ export default {
 @import "../../sass/global.scss";
 
 .fruit {
-  width: 16%;
+  width: 20rem;
   min-width: 20rem;
   border-radius: 1rem;
   -webkit-box-shadow: 1px 5px 10px 0px rgba(50, 50, 50, 0.158);
@@ -37,9 +39,9 @@ export default {
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  //height: 20rem;
+  justify-content: space-around;
   margin-right: 3rem;
-  padding: .6rem 0;
+  padding: 0.6rem 1rem;
   height: 100%;
 
   @media only screen and (max-width: 500px) {
@@ -51,15 +53,15 @@ export default {
     margin-right: 0;
   }
 
-  img {
-    //max-width: 100%;
-    //max-height: 50%;
-    width: 14rem;
-    align-self: center;
+  &__image {
+    width: 100%;
+    height: 100%;
 
-    @media only screen and (max-width: 500px) {
-      margin-right: 1rem;
-      width: 10rem;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
   }
 
@@ -71,7 +73,7 @@ export default {
     width: 90%;
 
     & > * {
-      margin-bottom: 0.3rem;
+      //margin-bottom: 0.3rem;
     }
 
     @media only screen and (max-width: 500px) {
@@ -96,16 +98,15 @@ export default {
     }
   }
 
-    button {
-      border: none;
-      background-color: rgb(243, 43, 43);
-      height: 3rem;
-      color: white;
-      padding: 0 1rem;
-      cursor: pointer;
-      align-self: center;
-      border-radius: 10px;
-      //width: 10rem;
-    }
+  button {
+    border: none;
+    background-color: rgb(243, 43, 43);
+    height: 3rem;
+    color: white;
+    padding: 0 1rem;
+    cursor: pointer;
+    align-self: center;
+    border-radius: 10px;
+  }
 }
 </style>

@@ -38,7 +38,6 @@ export default {
 
 <style lang="scss" scoped>
 .order {
-  //width: 30%;
   border-radius: 1rem;
   -webkit-box-shadow: 1px 5px 10px 0px rgba(50, 50, 50, 0.158);
   -moz-box-shadow: 1px 5px 10px 0px rgba(50, 50, 50, 0.158);
@@ -47,6 +46,8 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 1rem 3rem;
+  height: 100%;
+
 
     @media only screen and (max-width: 500px){
         //width: 100%;

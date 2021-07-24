@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <seller-card />
-    <order-list :orders="orders" @changeType="changeType" :loading="loading" />
+    <order-list :orders="orders" :loading="loading" />
   </div>
 </template>
 
@@ -24,17 +24,6 @@ export default {
     loading(){
       return this.$store.getters.ordersLoading
     }
-  },
-  methods: {
-    changeType(type) {
-      this.$router.replace({
-        path: "/",
-        query: {
-          type: type,
-        },
-      });
-      this.$store.dispatch("getOrders", this.$route.query);
-    },
   },
 };
 </script>
