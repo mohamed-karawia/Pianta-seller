@@ -2,8 +2,12 @@
   <div class="container">
     <div class="content">
       <div class="details">
-        <h1>Fruits</h1>
+        <h1>Pianta <span>Seller</span></h1>
         <h2>your health is the most thing we care about.</h2>
+        <h3>
+          Not a seller ?
+          <a href="http://localhost:8080/" target="_blank">click here</a>
+        </h3>
       </div>
       <div class="form">
         <Login v-if="form === 'login'" @switchForm="switchForm('signup')" />
@@ -43,7 +47,7 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  background-image: url("../assets/fruits.jpg");
+  background-color: $primary-color;
   background-size: cover;
   background-position: center;
   height: 140%;
@@ -57,11 +61,14 @@ export default {
 
   .details {
     //background-color: #38dbcbe1;
-    background-color: $primary-color;
+    background-color: #3cbeb1;
     position: absolute;
     top: 15%;
     max-width: 43%;
     padding: 1rem 3rem;
+    -webkit-box-shadow: 1px 5px 10px 0px rgba(50, 50, 50, 0.158);
+    -moz-box-shadow: 1px 5px 10px 0px rgba(50, 50, 50, 0.158);
+    box-shadow: 1px 5px 10px 0px rgba(50, 50, 50, 0.158);
 
     @media only screen and (max-width: 500px) {
       max-width: 100%;
@@ -91,6 +98,10 @@ export default {
     font-weight: 500;
     animation-name: slide;
     animation-duration: 1.5s;
+
+    span{
+      font-size: 5rem;
+    }
   }
 
   h2 {
@@ -100,6 +111,19 @@ export default {
     font-weight: 400;
     animation-name: slide;
     animation-duration: 1.5s;
+  }
+  h3 {
+    color: white;
+    font-size: 3rem;
+    text-transform: capitalize;
+    font-weight: 400;
+    animation-name: slide;
+    animation-duration: 1.5s;
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
   }
 }
 

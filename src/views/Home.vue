@@ -3,7 +3,10 @@
     <seller-card />
     <div class="seller">
       <order-list :orders="orders" :loading="loading" />
-      <wallet :pending="pendingWallet" :wallet="wallet" />
+      <div class="seller__side">
+        <wallet :pending="pendingWallet" :wallet="wallet" />
+        <Transactions :orders="endedOrders" :earnings="earnings" />
+      </div>
     </div>
   </div>
 </template>
@@ -11,29 +14,54 @@
 <script>
 import orderList from "../components/OrdersList/OrdersList";
 import sellerCard from "../components/SellerCard/SellerCard";
-import wallet from '../components/Wallet/Wallet.vue'
+import wallet from "../components/Wallet/Wallet.vue";
+import Transactions from "../components/Transactions/Transactions.vue";
 
 export default {
   components: {
     orderList,
     sellerCard,
-    wallet
+    wallet,
+    Transactions,
   },
   created() {
     this.$store.dispatch("getOrders", this.$route.query);
   },
   computed: {
     orders() {
-      return this.$store.getters.orders;
+      let orders = [];
+      for (let i of this.$store.getters.orders) {
+        if (i.state !== "ended") {
+          orders.push(i);
+        }
+      }
+      return orders;
+    },
+    endedOrders() {
+      let orders = [];
+      for (let i of this.$store.getters.orders) {
+        if (i.state === "ended") {
+          orders.push(i);
+        }
+      }
+      return orders;
+    },
+    earnings() {
+      let total = 0;
+      for (let i of this.endedOrders) {
+        total += i.amount * i.product.price;
+      }
+
+      return total;
     },
     loading() {
       return this.$store.getters.ordersLoading;
     },
-    wallet(){
-       return this.$store.getters.wallet;
+    wallet() {
+      return this.$store.getters.wallet;
     },
-    pendingWallet(){
-       return this.$store.getters.pendingWallet;
+    pendingWallet() {
+      return this.$store.getters.pendingWallet;
     },
   },
 };
@@ -51,13 +79,19 @@ export default {
   }
 }
 
-.seller{
+.seller {
   display: flex;
   align-items: flex-start;
   width: 100%;
 
-  @media only screen and (max-width: 750px){
+  @media only screen and (max-width: 750px) {
     flex-direction: column;
+  }
+
+  &__side {
+    @media only screen and (max-width: 750px) {
+      width: 100%;
+    }
   }
 }
 </style>

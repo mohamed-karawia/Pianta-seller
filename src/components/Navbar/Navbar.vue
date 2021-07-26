@@ -2,6 +2,7 @@
   <nav>
     <div class="upper--nav">
       <div class="nav--logo" @click="$router.push('/')">
+        <img :src="Logo" alt="logo" />
         <h1>Pianta <span>seller</span></h1>
       </div>
 
@@ -41,11 +42,14 @@
 </template>
 
 <script>
+import Logo from "../../assets/logo.png";
+
 export default {
   data() {
     return {
       showMobileMenu: false,
       showSearch: false,
+      Logo,
     };
   },
   methods: {
@@ -78,6 +82,12 @@ export default {
   color: white;
   font-size: 1.5rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  
+  img {
+    max-width: 4rem;
+  }
 
   span {
     font-size: 1.3rem;
@@ -216,7 +226,7 @@ export default {
   }
 }
 
-a.router-link-active{
+a.router-link-active {
   background-color: white;
   color: $primary-color;
 }

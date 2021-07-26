@@ -25,12 +25,6 @@
       <h2>mobile:</h2>
       <h3>{{order.client.mobile}}</h3>
     </div>
-    <div class="order--detail">
-      <h2>state:</h2>
-      <h3 
-      :class="[order.state === 'started' ? 'green' : 'red']"
-      style="text-transform: capitalize">{{order.state}}</h3>
-    </div>
   </div>
 </template>
 

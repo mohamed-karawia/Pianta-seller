@@ -1,9 +1,9 @@
 <template>
   <div class="ordersList">
     <ul v-if="!loading">
-      <li v-for="order in orders" :key="order._id">
-        <Order :order="order" />
-      </li>
+        <li v-for="order in orders" :key="order._id">
+          <Order :order="order" />
+        </li>
     </ul>
     <Spinner v-else />
   </div>
@@ -14,9 +14,6 @@ import Order from "../Order/Order";
 import Spinner from "../../components/Spinner/Spinner.vue";
 
 export default {
-  data() {
-    return {};
-  },
   props: {
     orders: Array,
     loading: Boolean,
