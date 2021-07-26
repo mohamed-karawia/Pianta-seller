@@ -2,7 +2,9 @@ import axios from 'axios'
 
 const state = {
     orders: [],
-    loading : false
+    loading : false,
+    wallet: 0,
+    pendingWallet: 0
 };
 
 const getters = {
@@ -11,13 +13,23 @@ const getters = {
     },
     ordersLoading(state){
         return state.loading
+    },
+    wallet(state){
+        return state.wallet;
+    },
+    pendingWallet(state){
+        return state.pendingWallet
     }
 };
 
 const mutations = {
     pushOrders(state, soldItems){
-        state.orders = soldItems
-    }
+        console.log(soldItems)
+        state.orders = soldItems.sloldItems;
+        state.wallet = soldItems.wallet;
+        state.pendingWallet = soldItems.bindingWallet
+    },
+
 };
 
 const actions = {
@@ -28,7 +40,7 @@ const actions = {
         .then(res => {
             state.loading = false;
             console.log(res)
-            commit('pushOrders', res.data.sloldItems.sloldItems)
+            commit('pushOrders', res.data.sloldItems)
         })
         .catch(err => {
             state.loading = false;

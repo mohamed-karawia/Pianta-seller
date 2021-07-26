@@ -68,12 +68,12 @@
         v-if="!classifyFreshLoading"
       >
         <label>Product Name</label>
-        <input type="text" v-model="productName" />
+        <input type="text" v-model="productName" @blur="$v.productName.$touch()"/>
       </div>
 
       <div class="input--box" v-if="!classifyFreshLoading">
         <label>Price</label>
-        <input type="text" v-model="price" />
+        <input type="text" v-model="price" @blur="$v.price.$touch()"/>
       </div>
 
       <div class="input--box" v-if="!classifyFreshLoading">
@@ -82,11 +82,12 @@
           type="number"
           v-model="stock"
           placeholder="Enter the number of units in stock"
+          @blur="$v.stock.$touch()"
         />
       </div>
-
+      <p v-if="$v.$anyError" style="color: red;font-size: 1.5rem">Please Enter valid data</p>
       <button
-        :disabled="classifyFreshLoading || productName == '' || price == ''"
+        :disabled="classifyFreshLoading || productName == '' || price == '' || $v.$anyError"
         @click="addProduct"
         v-if="!productLoading"
       >
@@ -100,7 +101,12 @@
 <script>
 import Spinner from "../Spinner/Spinner";
 import fruits from "../../fruits";
-
+import {
+  required,
+  numeric,
+  minLength,
+  minValue
+} from "vuelidate/lib/validators";
 export default {
   data() {
     return {
@@ -184,6 +190,21 @@ export default {
     },
     productLoading() {
       return this.$store.getters.productLoading;
+    },
+  },
+    validations: {
+    productName: {
+      required,
+      minLen: minLength(4),
+    },
+    price: {
+      required,
+      numeric,
+    },
+    stock: {
+      required,
+      numeric,
+      minVal: minValue(1)
     },
   },
 };

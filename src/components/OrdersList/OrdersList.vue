@@ -11,7 +11,7 @@
 
 <script>
 import Order from "../Order/Order";
-import Spinner from '../../components/Spinner/Spinner.vue'
+import Spinner from "../../components/Spinner/Spinner.vue";
 
 export default {
   data() {
@@ -19,11 +19,11 @@ export default {
   },
   props: {
     orders: Array,
-    loading: Boolean
+    loading: Boolean,
   },
   components: {
     Order,
-    Spinner
+    Spinner,
   },
 };
 </script>
@@ -32,18 +32,22 @@ export default {
 .ordersList {
   width: 100%;
 
-  ul {
-      list-style: none;
-      display: grid;
-      justify-content: center;
-      grid-template-columns: repeat(auto-fit, minmax(10rem, 30rem));
-      grid-column-gap: 20px;
-      row-gap: 1rem;
-      align-items: stretch;
+  @media only screen and (max-width: 750px) {
+    order: 2;
+  }
 
-      @media only screen and (max-width: 661px){
-        grid-template-columns: repeat(1, 1fr);
-      }
+  ul {
+    list-style: none;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 30rem));
+    grid-column-gap: 20px;
+    row-gap: 1rem;
+    grid-auto-flow: dense;
+
+    @media only screen and (max-width: 661px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 }
 </style>

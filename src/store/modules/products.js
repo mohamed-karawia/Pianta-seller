@@ -56,9 +56,18 @@ const actions = {
             console.log(err)
         })
     },
-    /*deleteProduct({commit}, id){
-
-    }*/
+    deleteProduct({dispatch}, id){
+        axios.post('/seller/shop/Product/delete', {
+            id: id
+        })
+        .then(res => {
+            console.log(res)
+            dispatch('getMyProducts')
+        })
+        .catch(err => {
+            console.log(err.response)
+        })
+    }
 };
 
 export default {
